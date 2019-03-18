@@ -1,0 +1,29 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.0.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.hello.web'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+
+	// Molr Repo
+	maven { url "https://dl.bintray.com/molr/molr-repo" }
+}
+
+dependencies {
+
+	compile (group: 'io.molr', name: 'molr-mole-server', version: '0.2.1')
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf") {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+//mainClassName = 'io.molr.mole.server.main.DemoMolrServerMain'

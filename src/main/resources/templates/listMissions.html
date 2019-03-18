@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List Available Missions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<table id="allMissions" class="table table-striped">
+    <thead>
+    <tr>
+        <th width="70%">Available Missions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="agencyStateDaos" type="io.molr.commons.domain.dto.AgencyStateDto"*/-->
+    <div data-th-each="agencyStateDao : ${agencyStateDaos}">
+        <!--/*@thymesVar id="availableMissions" type="java.util.HashSet"*/-->
+            <!--/*@thymesVar id="mission" type="io.molr.commons.domain.dto.MissionDto"*/-->
+        <tr class="result" data-th-each="mission : ${agencyStateDao.availableMissions}">
+            <td>[[${mission.name}]]</td>
+        </tr>
+    </div>
+    </tbody>
+</table>
+</body>
+</html>
